@@ -1,0 +1,47 @@
+<!--pages/edit/profile.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__bd" style="margin-top:10rpx">
+        <form bindsubmit="formSubmit">
+          <view class="weui-toptips weui-toptips_warn" 
+              wx:if="{{showTopTips}}">错误提示</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">名字</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="userNick"
+                      placeholder="请输入您在BOX的别名"
+                      confirm-type="next"/>
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">选择您所在的Box</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_select">
+                <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                    <view class="weui-label">城市</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker  value="{{countryIndex}}" name="pickerCity" range="{{countries}}">
+                        <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_select">
+                <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                    <view class="weui-label">Box</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker bindchange="bindBoxChange" name="pickerBox" value="{{boxIndex}}" range="{{Boxes}}">
+                        <view class="weui-select weui-select_in-select-after">{{Boxes[boxIndex]}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" form-type="submit">确定</button>
+        </view>
+        </form>
+    </view>
+</view>

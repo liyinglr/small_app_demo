@@ -1,1 +1,4 @@
 /**index.wxss**/
+.view-hover{
+  background-color: #A8A8A8;
+}

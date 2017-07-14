@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/edit/profile"
   ],
   "window": {
     "backgroundTextStyle": "light",

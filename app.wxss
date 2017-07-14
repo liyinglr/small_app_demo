@@ -14,22 +14,27 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-color: white;
+  margin-top: 10rpx
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
+  width: 96rpx;
+  height: 96rpx;
   margin: 20rpx;
   border-radius: 50%;
 }
-
 .userinfo-nickname {
+  margin: 20rpx;
+}
+.userinfo-des {
   margin: 20rpx;
   color: #aaa;
 }
-.userinfo-btn{
+.next-button{
   color: #bbb;
   border: none;
+  margin: 20rpx;
 }
 
 .usermotto {
