@@ -14,4 +14,7 @@
   <picker-view-column>
     <view wx:for="{{cityData}}" class="addr-item">{{item}}</view>
   </picker-view-column>
+  <picker-view-column wx:if="{{showDistrict}}">
+    <view wx:for="{{districtData}}" class="addr-item">{{item.fullNameDot}}</view>
+  </picker-view-column>
 </picker-view>
