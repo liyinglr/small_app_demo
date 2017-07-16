@@ -1,13 +1,31 @@
 <!--pages/edit/profile.wxml-->
+<button class="choose" bindtap="choosearea" type="primary">选择地址</button>
+
+<navigator url="../picker/picker" open-type="redirect">
+    <button bindtap="" type="primary">跳转到老板模拟实现页</button>
+</navigator>
+
+
+<picker-view wx:if="{{isShow}}" class="picker-view" indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+  <picker-view-column>
+    <view wx:for="{{proviceData}}" class="addr-item">{{item.fullNameDot}}</view>
+  </picker-view-column>
+  <picker-view-column>
+    <view wx:for="{{cityData}}" class="addr-item">{{item.fullNameDot}}</view>
+  </picker-view-column>
+  <picker-view-column wx:if="{{showDistrict}}">
+    <view wx:for="{{districtData}}" class="addr-item">{{item.fullNameDot}}</view>
+  </picker-view-column>
+</picker-view>
+<view class="weui-toptips weui-toptips_warn" 
+    wx:if="{{errorMessage}}">{{errorMessage}}</view>
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
     <view class="page__bd" style="margin-top:10rpx">
         <form bindsubmit="formSubmit">
-          <view class="weui-toptips weui-toptips_warn" 
-              wx:if="{{showTopTips}}">错误提示</view>
           <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__hd">
-                    <view class="weui-label">名字</view>
+                    <view class="weui-label">用户名</view>
                 </view>
                 <view class="weui-cell__bd">
                     <input class="weui-input" name="userNick"

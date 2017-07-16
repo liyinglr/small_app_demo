@@ -1,1 +1,2 @@
 /* pages/edit/profile.wxss */
+@import "../selectarea/selectarea.wxss";

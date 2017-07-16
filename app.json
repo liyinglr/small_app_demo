@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/picker/picker",
     "pages/index/index",
     "pages/logs/logs",
     "pages/me/me",
@@ -14,7 +15,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/picker/picker",
         "text": "WOD",
         "iconPath": "images/wod.png",
         "selectedIconPath": "images/wod_s.png"

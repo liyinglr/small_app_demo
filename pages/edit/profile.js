@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showTopTips: false,
+    errorMessage:"",
     Boxes: ["Hyblum"],
     boxIndex: 0,
     cities:["苏州","上海"]
@@ -15,14 +15,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.getLocation({
-      success: function(res) {
-        console.log(res)
-      },
-      fail:function(res){
-        console.log(res)
-      }
-    })
+    // wx.getLocation({
+    //   success: function(res) {
+    //     console.log(res)
+    //   },
+    //   fail:function(res){
+    //     console.log(res)
+    //   }
+    // })
   },
 
   /**
@@ -75,6 +75,20 @@ Page({
   },
   //form sumbnit function
   formSubmit: function(e){
+    var detail = e.detail.value
+    if(detail.userNick == ""){
+      this.setData({
+        errorMessage:"请输入用户名"
+      })
+      this.ohShitfadeOut()
+      return
+    }
     console.log(e.detail.value)
-  }
+  },
+  ohShitfadeOut() {
+    var fadeOutTimeout = setTimeout(() => {
+      this.setData({ errorMessage: '' });
+      clearTimeout(fadeOutTimeout);
+    }, 2000);
+  },
 })
