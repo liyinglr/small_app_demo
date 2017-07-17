@@ -1,22 +1,3 @@
-<!--pages/edit/profile.wxml-->
-<button class="choose" bindtap="choosearea" type="primary">选择地址</button>
-
-<navigator url="../picker/picker" open-type="redirect">
-    <button bindtap="" type="primary">跳转到老板模拟实现页</button>
-</navigator>
-
-
-<picker-view wx:if="{{isShow}}" class="picker-view" indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
-  <picker-view-column>
-    <view wx:for="{{proviceData}}" class="addr-item">{{item.fullNameDot}}</view>
-  </picker-view-column>
-  <picker-view-column>
-    <view wx:for="{{cityData}}" class="addr-item">{{item.fullNameDot}}</view>
-  </picker-view-column>
-  <picker-view-column wx:if="{{showDistrict}}">
-    <view wx:for="{{districtData}}" class="addr-item">{{item.fullNameDot}}</view>
-  </picker-view-column>
-</picker-view>
 <view class="weui-toptips weui-toptips_warn" 
     wx:if="{{errorMessage}}">{{errorMessage}}</view>
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
@@ -41,11 +22,22 @@
                     <view class="weui-label">城市</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <picker  value="{{countryIndex}}" name="pickerCity" range="{{countries}}">
+                    <label class="weui-cell" bindtap="choosearea">{{address}}</label>
+                    <!-- <picker  value="{{countryIndex}}" name="pickerCity" range="{{countries}}">
                         <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
-                    </picker>
+                    </picker> -->
                 </view>
             </view>
+            <picker-view wx:if="{{isShow}}" class="picker-view" 
+              indicator-style="height: 30px;margin-bottom: 15px;" 
+              style="width: 100%; height: 200px;margin:10rpx;" value="{{value}}" bindchange="bindChange">
+              <picker-view-column>
+                <view wx:for="{{proviceData}}" class="addr-item">{{item}}</view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{cityData}}" class="addr-item">{{item}}</view>
+              </picker-view-column>
+            </picker-view>
             <view class="weui-cell weui-cell_select">
                 <view class="weui-cell__hd weui-cell__hd_in-select-after">
                     <view class="weui-label">Box</view>

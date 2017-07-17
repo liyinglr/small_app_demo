@@ -1,10 +1,9 @@
 {
   "pages": [
-    "pages/picker/picker",
+    "pages/edit/profile",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/me/me",
-    "pages/edit/profile"
+    "pages/me/me"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,7 +14,7 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/picker/picker",
+        "pagePath": "pages/edit/profile",
         "text": "WOD",
         "iconPath": "images/wod.png",
         "selectedIconPath": "images/wod_s.png"

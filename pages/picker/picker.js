@@ -8,7 +8,8 @@ const API = 'http://japi.zto.cn/zto/api_utf8/baseArea?msg_type=GET_AREA&data=';
 
 Page({
   data: {
-
+    prevProviceId:-1,
+    prevCityId:-1  
   },
 
   addDot: function (arr) {
@@ -28,9 +29,12 @@ Page({
    * 初始化区域数据
    */
   onLoad: function () {
+    this.data.prevProviceId = 0
+    this.data.prevCityId = 0
     this.setData({
       proviceData: utils.provices,
       cityData: utils.cities['北京'],
+      address: utils.cities['北京'][this.data.prevCityId],
       isShow: false, // 显示区域选择框
       showDistrict: false // 默认为省市区三级区域选择
     });
@@ -49,39 +53,29 @@ Page({
   bindChange: function (e) {
     var current_value = e.detail.value, _data = this.data;
 
+    console.log(_data);
     console.log(current_value);
-    console.log(this.data.value)
+    var procName = utils.provices[current_value[0]]
+    console.log(procName);
     if (current_value.length >= 2) {
-      if (this.data.value[0] !== current_value[0] && 
-        this.data.value[1] === current_value[1]) {
+      if (this.data.prevProviceId !== current_value[0] && 
+        this.data.prevCityId === current_value[1]) {
         // 滑动省份
-        console.log(current_value[0]);
-        var procName = utils.provices[current_value[0]]
-        console.log(procName);
+        console.log('滑动省份');
+        this.data.prevProviceId = current_value[0]
+        this.data.prevCityId = 0;
         this.setData({
           cityData: utils.cities[procName],  
+          address: utils.cities[procName][this.data.prevCityId]
         })
-      } else if (this.data.value[0] === current_value[0] && 
-      this.data.value[1] !== current_value[1]) {
+      } else if (this.data.prevProviceId === current_value[0] && 
+        this.data.prevCityId !== current_value[1]) {
         // 滑动城市
-        Promise(wx.request, {
-          url: API + _data.cityData[current_value[1]].code,
-          method: 'GET'
-        }).then((district) => {
-          if (district.data.result.length > 0) {
-            this.addDot(district.data.result);
-            this.setData({
-              districtData: district.data.result,
-              'value[0]': current_value[0],
-              'value[1]': current_value[1],
-              'value[2]': 0,
-              address: this.data.proviceData[current_value[0]].fullName + ' - ' + this.data.cityData[current_value[1]].fullName + ' - ' + district.data.result[0].fullName
-            })
-          }
-        }).catch((e) => {
-          console.log(e);
+        console.log('滑动城市');
+        this.data.prevCityId = current_value[1];
+        this.setData({
+          address: utils.cities[procName][this.data.prevCityId],
         })
-
       }
     }
   }
