@@ -1,9 +1,10 @@
 {
   "pages": [
-    "pages/edit/profile",
+    "pages/wod/wod",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/edit/profile"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -14,13 +15,13 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/edit/profile",
+        "pagePath": "pages/wod/wod",
         "text": "WOD",
         "iconPath": "images/wod.png",
         "selectedIconPath": "images/wod_s.png"
       },
       {
-        "pagePath": "pages/me/me",
+        "pagePath": "pages/index/index",
         "text": "我",
         "iconPath": "images/me.png",
         "selectedIconPath": "images/me_s.png"
