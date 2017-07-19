@@ -1,6 +1,11 @@
 // pages/wod/wod.js
 Page({
-
+/**
+ * 1.固定组数5 rounds for reps of
+ * 2。指定时间内做更多的组数Complete as many rounds as possible in 25 minutes of
+ * 3. 21-15-9 reps for time
+ * 4. 组队？
+ */
   /**
    * 页面的初始数据
    */
